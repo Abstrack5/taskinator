@@ -1,12 +1,16 @@
 
-// targeting and assigning button to the variable buttonEl
-var buttonEl = document.querySelector("#save-task");
+var formEl = document.querySelector("#task-form");
 // targeted the ul in the body
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
 
 
-var createTaskHandler = function() {
+var createTaskHandler = function(event) {
+
+  // prevent browser from refreshing
+  event.preventDefault();
+
+
   // once clicked it will create a li element
   var listItemEl = document.createElement("li");
   // assignign the new li to the existing class, for style
@@ -18,5 +22,4 @@ var createTaskHandler = function() {
 };
 
 
-// added eventListener to listen for a click
-buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("submit", createTaskHandler);
