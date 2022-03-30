@@ -10,15 +10,28 @@ var createTaskHandler = function(event) {
   // prevent browser from refreshing
   event.preventDefault();
 
+  // targeting the input box and assigning it to a variable
+  var taskNameInput = document.querySelector("input[name='task-name']").value;
+  var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
-  // once clicked it will create a li element
-  var listItemEl = document.createElement("li");
-  // assignign the new li to the existing class, for style
-  listItemEl.className = "task-item";
-  // the text withing each new li element
-  listItemEl.textContent = "This is a new task";
-  // places the new li element within the ul element
-  tasksToDoEl.appendChild(listItemEl);
+
+  // create list item
+var listItemEl = document.createElement("li");
+listItemEl.className = "task-item";
+
+
+// create div to hold task info and add to list item
+var taskInfoEl = document.createElement("div");
+taskInfoEl.className = "task-info";
+
+
+// add HTML content to div
+taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'>" + taskTypeInput + "</span>";
+listItemEl.appendChild(taskInfoEl);
+
+
+// add entire list item to list
+tasksToDoEl.appendChild(listItemEl);
 };
 
 
